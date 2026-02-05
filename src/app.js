@@ -24,8 +24,26 @@ app.post("/notes", async(req, res) => {
 
 
 app.get("/notes", async(req, res) => {
-    
-})
+    const notes = await noteModel.find();
+
+    res.status(201).json({
+        message: "all-notes",
+        notes: notes
+    })
+});
+
+
+app.delete("/notes/:id", async(req, res) => {
+    const id = req.params.id;
+
+    await noteModel.findOneAndDelete({
+        _id: id,
+    });
+
+    res.status(201).json({
+        message: "data deleted",
+    })
+});
 /* all the API writing end */
 
 
