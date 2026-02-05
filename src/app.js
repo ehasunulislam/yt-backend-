@@ -44,6 +44,21 @@ app.delete("/notes/:id", async(req, res) => {
         message: "data deleted",
     })
 });
+
+
+app.patch("/notes/:id", async(req, res) => {
+    const id = req.params.id;
+    const description = req.body.description;
+
+    await noteModel.findOneAndUpdate(
+        {_id: id},
+        {description: description}
+    );
+
+    res.status(200).json({
+        message: "updated successfully"
+    })
+})
 /* all the API writing end */
 
 
