@@ -20,6 +20,11 @@ app.post("/notes", async(req, res) => {
     res.status(201).json({
         message: "Note created"
     })
+});
+
+
+app.get("/notes", async(req, res) => {
+    
 })
 /* all the API writing end */
 
